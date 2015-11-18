@@ -3,6 +3,10 @@
     display: block;
   }
 }
+/* footer */
+.main-footer {
+  padding: 10px;
+}
 
 /* centered columns styles */
 .row-centered {
