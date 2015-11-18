@@ -1,0 +1,68 @@
+<template name="manageGroupHeader">
+  <section class="content-header">
+    <h1>Manage Groups <small>{{total}} groups</small></h1>
+  </section>
+</template>
+
+<template name="manageGroupNav">
+  <div class="col-md-3">
+    <a href="{{pathFor 'manageGroupCreate'}}" class="btn btn-primary btn-block margin-bottom">Create Group</a>
+    <div class="box box-solid">
+      <div class="box-header with-border">
+        <h3 class="box-title">Groups</h3>
+        <div class="box-tools">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+          {{#each groups}}
+          <li>
+            <a href="{{pathFor 'manageGroupView' id=_id}}">
+              <i class="fa fa-circle-o text-{{#if joinable}}{{#if public}}light-blue{{else}}yellow{{/if}}{{else}}red{{/if}}"></i> {{name}}
+              <span class="label bg-aqua pull-right">{{getLength users}}</span>
+              {{#if users_pending}}<span class="label bg-purple pull-right margin-right-2">{{getLength users_pending}}</span>{{/if}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="box box-solid">
+      <div class="box-header with-border">
+        <h3 class="box-title">Roles</h3>
+        <div class="box-tools">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        <strong>user-services</strong>
+        <p class="text-muted">use services</p>
+        <strong>user-timer</strong>
+        <p class="text-muted">view fleet timers</p>
+        <strong>user-srp</strong>
+        <p class="text-muted">view/create own SRP requests</p>
+        <strong>user-services-broadcast</strong>
+        <p class="text-muted">broadcast messages</p>
+        <strong>manage-users</strong>
+        <p class="text-muted">view/ban/unban user</p>
+        <strong>manage-groups</strong>
+        <p class="text-muted">create/edit/delete groups, add/remove users/roles
+        <br>cannot view/modify admin/super-admin groups</p>
+        <strong>manage-services</strong>
+        <p class="text-muted">add/edit/delete services</p>
+        <strong>manage-timers</strong>
+        <p class="text-muted">add/edit/delete timers</p>
+        <strong>manage-srp</strong>
+        <p class="text-muted">approve/deny SRP requests</p>
+        <strong>admin</strong>
+        <p class="text-muted">all manage roles
+        <br>cannot view/modify super-admin groups</p>
+        <strong>super-admin</strong>
+        <p class="text-muted">all manage roles</p>
+      </div>
+    </div>
+  </div>
+</template>

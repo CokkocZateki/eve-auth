@@ -1,0 +1,72 @@
+<template name="leftSidebar">
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
+        </div>
+        <div class="pull-left info">
+          <p>{{currentUser.profile.name}}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <!--<form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>-->
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN</li>
+        <li class="{{isActiveRoute 'dashboard'}}"><a href="{{pathFor 'dashboard'}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li class="{{isActiveRoute 'groupList'}}"><a href="{{pathFor 'groupList'}}"><i class="fa fa-users"></i> <span>Groups</span></a></li>
+        <li class="{{isActiveRoute 'help'}}"><a href="{{pathFor 'help'}}"><i class="fa fa-question"></i> <span>Help</span></a></li>
+        <li class="header">ADDONS</li>
+        {{#if servicesActive}}
+          <li class="{{isActiveRoute 'serviceList'}}"><a href="{{pathFor 'serviceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
+        {{/if}}
+        {{#if timersActive}}
+          <li><a href="#"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+        {{/if}}
+        {{#if srpActive}}
+          <li><a href="#"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+        {{/if}}
+        <li class="header">MANAGE</li>
+        {{#if hasRole 'manage-users'}}
+          <li class="{{isActiveRoute 'manageUserList'}}"><a href="{{pathFor 'manageUserList'}}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        {{/if}}
+        {{#if hasRole 'manage-groups'}}
+          <li class="{{isActivePath  regex='/manage\/group'}}"><a href="{{pathFor 'manageGroupList'}}"><i class="fa fa-users"></i> <span>Groups</span></a></li>
+        {{/if}}
+        {{#if servicesActive}}
+          {{#if hasRole 'manage-services'}}
+            <li class="{{isActiveRoute 'manageServiceList'}}"><a href="{{pathFor 'manageServiceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
+          {{/if}}
+        {{/if}}
+        {{#if timersActive}}
+          {{#if hasRole 'manage-timers'}}
+            <li><a href="#"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+          {{/if}}
+        {{/if}}
+        {{#if srpActive}}
+          {{#if hasRole 'manage-srp'}}
+            <li><a href="#"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+          {{/if}}
+        {{/if}}
+        {{#if hasRole 'admin'}}
+          <li class="header">ADMINISTRATION</li>
+          <li class="{{isActiveRoute 'adminDashboard'}}"><a href="{{pathFor 'adminDashboard'}}"><i class="fa fa-circle-o text-red"></i> <span>Admin</span></a></li>
+        {{/if}}
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+</template>

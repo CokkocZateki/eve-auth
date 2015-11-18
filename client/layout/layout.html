@@ -1,0 +1,196 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>EVE-Auth</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+</body>
+
+<template name="layout">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="../../index2.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>uth</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>EVE</b>auth</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+            <li class="dropdown messages-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-envelope-o"></i>
+                <span class="label label-success">4</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="header">You have 4 messages</li>
+                <li>
+                  <!-- inner menu: contains the actual data -->
+                  <ul class="menu">
+                    <li><!-- start message -->
+                      <a href="#">
+                        <div class="pull-left">
+                          <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
+                        </div>
+                        <h4>
+                          Support Team
+                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                        </h4>
+                        <p>Why not buy a new awesome theme?</p>
+                      </a>
+                    </li>
+                    <!-- end message -->
+                  </ul>
+                </li>
+                <li class="footer"><a href="#">See All Messages</a></li>
+              </ul>
+            </li>
+            <!-- Notifications: style can be found in dropdown.less -->
+            <li class="dropdown notifications-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-hourglass"></i>
+                <span class="label label-warning">4</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="header">4 Timers Active</li>
+                <li>
+                  <!-- inner menu: contains the actual data -->
+                  <ul class="menu">
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-rocket text-aqua"></i> POCO Defense @ 2015-11-07 03:50
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="footer"><a href="#">View all</a></li>
+              </ul>
+            </li>
+            <!-- Tasks: style can be found in dropdown.less -->
+            <li class="dropdown tasks-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-ils"></i>
+                <span class="label label-danger">2</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="header">2 SRP Requests Active</li>
+                <li>
+                  <!-- inner menu: contains the actual data -->
+                  <ul class="menu">
+                    <li><!-- Task item -->
+                      <a href="#">
+                        <h3>
+                          Slowcat
+                          <small class="pull-right">20%</small>
+                        </h3>
+                        <div class="progress xs">
+                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">20% Complete</span>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- end task item -->
+                  </ul>
+                </li>
+                <li class="footer">
+                  <a href="#">View all</a>
+                </li>
+              </ul>
+            </li>
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="user-image" alt="{{ currentUser.profile.name }}">
+                <span class="hidden-xs">{{currentUser.profile.name}}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
+
+                  <p>
+                    {{currentUser.profile.name}}
+                    <small>{{currentUser.profile.corporation_name}}</small>
+                    {{#if currentUser.profile.alliance_name}}
+                    <small>{{currentUser.profile.alliance_name}}</small>
+                    {{/if}}
+                  </p>
+                </li>
+                <!-- Menu Body -->
+                <!--<li class="user-body">
+                  <div class="row">
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Followers</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Sales</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Friends</a>
+                    </div>
+                  </div>-->
+                  <!-- /.row -->
+                <!--</li>-->
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a id="logout" class="btn btn-default btn-flat" href="#">Profile</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="/logout" id="logout" class="btn btn-default btn-flat">Logout</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <!-- Control Sidebar Toggle Button -->
+            <!--<li>
+              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            </li>-->
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    {{> leftSidebar}}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {{>Template.dynamic template=content}}
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+    </footer>
+
+  </div>
+  <!-- ./wrapper -->
+  <script src="/js/app.min.js"></script>
+</template>
+
+<template name="noLayout">
+  {{>Template.dynamic template=content}}
+</template>

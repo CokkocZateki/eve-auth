@@ -1,0 +1,65 @@
+<template name="dashboard">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Dashboard</h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Character</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="col-md-3">
+              <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_128.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
+            </div>
+            <div class="col-md-9">
+              <h4>
+                <dl class="dl-horizontal char-info">
+                  <dt>Name</dt>
+                  <dd>{{currentUser.profile.name}}</dd>
+                  <dt>Corporation</dt>
+                  <dd>{{currentUser.profile.corporation_name}}</dd>
+                  <dt>Alliance</dt>
+                  <dd>{{currentUser.profile.alliance_name}}</dd>
+                </dl>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">My Groups</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="list-group">
+              {{#each currentUser.groups}}
+              {{#with group}}
+              <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{name}}</h4>
+                <p class="list-group-item-text">{{description}}</p>
+              </a>
+              {{/with}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- /.content -->
+</template>

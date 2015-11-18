@@ -1,0 +1,60 @@
+<template name="manageGroupCreate">
+  {{> manageGroupHeader}}
+
+  <section class="content">
+    <div class="row">
+      {{> manageGroupNav}}
+      {{#if hasRole 'manage-groups'}}
+      <div class="col-md-9">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Create New Group</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-8">
+                <form id="group-add">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="serviceName">Service Name</label>
+                    <input type="text" class="form-control" id="serviceName" placeholder="Service Name" ria-describedby="serviceNameBlock">
+                    <span id="serviceNameBlock" class="help-block">Use underscores instead of spaces</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" placeholder="Description">
+                  </div>
+                  <div class="form-group">
+                    <label for="requirement">Requirements</label>
+                    <input type="text" class="form-control" id="requirement" placeholder="Requirements">
+                  </div>
+                  <br>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="public" value="">
+                      <strong>Public</strong> - if set, users are able to automatically join this group
+                    </label>
+                  </div>
+                  <br>
+                  <br>
+                  <button type="button" class="btn btn-danger" onclick="history.back()">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <h1>no permissions</h1>
+      {{/if}}
+    </div>
+  </section>
+</template>

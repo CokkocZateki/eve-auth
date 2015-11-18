@@ -1,0 +1,94 @@
+<template name="groupList">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Groups</h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Available Groups</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body no-padding">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th><span class="text-danger">Requirements</span></th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each groups}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{description}}</td>
+                  <td>{{requirement}}</td>
+                  <td>{{#if public}}<span class="label label-success">Public</span>{{else}}<span class="label label-danger">Private</span>{{/if}}</td>
+                  <td><button type="button" class="btn btn-success btn-sm join-group">{{#if public}}Join{{else}}Request Join{{/if}}</button></td>
+                </tr>
+                {{/each}}
+                {{#each pendingGroups}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{description}}</td>
+                  <td>{{requirement}}</td>
+                  <td>{{#if public}}<span class="label label-success">Public</span>{{else}}<span class="label label-danger">Private</span>{{/if}}</td>
+                  <td><button type="button" class="btn btn-info btn-sm disabled">Pending</button></td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">My Groups</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body no-padding">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th><span class="text-danger">Requirements</span></th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each myGroups}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{description}}</td>
+                  <td>{{requirement}}</td>
+                  <td>{{#if public}}<span class="label label-success">Public</span>{{else}}<span class="label label-danger">Private</span>{{/if}}</td>
+                  <td><button type="button" class="btn btn-danger btn-sm {{#if joinable}}leave-group{{else}}disabled{{/if}}">Leave</button></td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- /.content -->
+</template>

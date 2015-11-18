@@ -1,0 +1,195 @@
+<template name="manageGroupView">
+  {{> manageGroupHeader}}
+
+  <section class="content">
+    <div class="row">
+      {{> manageGroupNav}}
+      {{#if hasRole 'manage-groups'}}
+      {{#if Template.subscriptionsReady}}
+      {{#with group}}
+      <div class="col-md-9">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">{{name}}</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-3">
+                <dl>
+                  <dt>Name</dt>
+                  <dd>{{name}}</dd>
+                  <dt>Description</dt>
+                  <dd>{{description}}</dd>
+                  <dt>Requirements</dt>
+                  <dd>{{requirement}}</dd>
+                </dl>
+              </div>
+              <div class="col-md-2">
+                <dl>
+                  <dt>Service Name</dt>
+                  <dd>{{service_name}}</dd>
+                  <dt>Public</dt>
+                  <dd><span class="label label-{{#if public}}success{{else}}danger{{/if}}">{{#if public}}Yes{{else}}No{{/if}}</span></dd>
+                  <dt>Joinable</dt>
+                  <dd><span class="label label-{{#if joinable}}success{{else}}danger{{/if}}">{{#if joinable}}Yes{{else}}No{{/if}}</span></dd>
+                </dl>
+              </div>
+              <div class="col-md-3">
+                <div class="info-box bg-purple">
+                  <span class="info-box-icon"><i class="fa fa-user-plus"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Pending Requests</span>
+                    <span class="info-box-number">{{getLength users_pending}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="info-box bg-aqua">
+                  <span class="info-box-icon"><i class="fa fa-users"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Members</span>
+                    <span class="info-box-number">{{getLength users}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Pending requests to join group</h4>
+                <table id="pending" class="table table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Corporation</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each getPending}}
+                    <tr>
+                      <td>{{profile.name}}</td>
+                      <td>{{profile.corporation_name}}</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Approve or Deny">
+                          <button type="button" class="btn btn-primary user-approve" value="{{../_id}}">Approve</button>
+                          <button type="button" class="btn btn-danger user-deny" value="{{../_id}}">Deny</button>
+                        </div>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5">
+                <h4>Users in group</h4>
+                <table id="users" class="table table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Corporation</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each getUsers}}
+                    <tr>
+                      <td>{{profile.name}}</td>
+                      <td>{{profile.corporation_name}}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm user-remove" value="{{../_id}}">Remove</button>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+                <form id="user-add" class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only" for="userName">User Name</label>
+                    <input type="text" class="form-control typeahead" id="userName" placeholder="User Name" autocomplete="off" spellcheck="off" data-source="usersList">
+                  </div>
+                  <button type="submit" class="btn btn-primary {{#unless joinable}}disabled{{/unless}}">Add</button>
+                </form>
+              </div>
+              <div class="col-md-3">
+                <h4>Group roles</h4>
+                <table id="roles" class="table table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each roles}}
+                    <tr>
+                      <td>{{this}}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm role-remove" value="{{../_id}}">Remove</button>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+                <form id="role-add" class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only" for="addUsertoGroup">Role</label>
+                    <select id="addRoleToGroup" class="form-control">
+                      <option>user-services</option>
+                      <option>user-timer</option>
+                      <option>user-srp</option>
+                      <option>user-services-broadcast</option>
+                      <option>manage-users</option>
+                      <option>manage-groups</option>
+                      <option>manage-services</option>
+                      <option>manage-timers</option>
+                      <option>manage-srp</option>
+                      {{#if hasRole 'admin'}}
+                      <option>admin</option>
+                      {{/if}}
+                      {{#if hasRole 'super-admin'}}
+                      <option>super-admin</option>
+                      {{/if}}
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <div class="box-footer">
+            <div class="pull-right">
+              <a href="{{pathFor 'manageGroupEdit' id=_id}}" type="button" id="group-edit" class="btn btn-warning btn-sm margin-right-5">Edit</a>
+              <button type="button" id="group-delete" class="btn btn-danger btn-sm pull-right">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/with}}
+      {{/if}}
+      {{else}}
+      <h1>no permissions</h1>
+      {{/if}}
+
+    </div>
+
+  </section>
+  <script>
+    $(document).ready(function() {
+      $('#pending').DataTable({
+        paging: false,
+        searching: false
+      });
+      $('#users').DataTable();
+      $('#roles').DataTable({
+        paging: false,
+        searching: false
+      });
+    });
+  </script>
+</template>

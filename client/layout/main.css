@@ -1,0 +1,68 @@
+@media (min-width: 979px) {
+  .nav .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.login-sso-btn {
+  padding-left: 25px;
+}
+.login-box-body {
+  background: inherit;
+}
+.char-info {
+  padding-top: 12px;
+}
+.margin-right-2 {
+  margin-right: 2px;
+}
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+/* typeadead */
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+	margin-bottom: 0;
+}
+.tt-menu {
+	min-width: 160px;
+	margin-top: 2px;
+	padding: 5px 0;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+  -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
+
+}
+.tt-suggestion {
+	display: block;
+	padding: 3px 20px;
+}
+tt-suggestion:hover {
+	color: #fff;
+	background-color: #428bca;
+}
+.tt-is-under-cursor a {
+	color: #fff;
+}
+.tt-suggestion p {
+	margin: 0;
+}

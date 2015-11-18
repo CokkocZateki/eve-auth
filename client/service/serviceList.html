@@ -1,0 +1,16 @@
+<template name="serviceList">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Services</h1>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      {{#with services}}
+        {{#each services}}
+          {{> UI.dynamic template=this.service}}
+        {{/each}}
+      {{/with}}
+    </div>
+  </section>
+</template>

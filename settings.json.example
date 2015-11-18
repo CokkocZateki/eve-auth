@@ -1,0 +1,22 @@
+{
+  "eve": {
+    "sso": {
+      "client_id": "",
+      "secret_key": ""
+    },
+    "alliance": true,
+    "id": 0
+  },
+  "services": {
+    "enabled": true
+  },
+  "timers": {
+    "enabled": true
+  },
+  "srp": {
+    "enabled": true
+  },
+  "public": {
+    "admins": []
+  }
+}
