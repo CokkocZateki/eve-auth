@@ -11,6 +11,7 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 * Groups with roles based permissions
 * Timerboard, SRP, 3rd Party Services (Openfire, etc)
 * Add or remove a service using Meteor's package management system
+
 ### Wiki
 * [Home](https://github.com/kallama/eve-auth/wiki)
 * [Development](https://github.com/kallama/eve-auth/wiki/Development)
@@ -18,13 +19,17 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 * [Service Packages](https://github.com/kallama/eve-auth/wiki/Service-Packages)
 * [Create Service Package](https://github.com/kallama/eve-auth/wiki/Create-Service-Package)
 * [Change Log](https://github.com/kallama/eve-auth/wiki/Changelog)
+
 ### Service List
 https://atmospherejs.com/kalam/eve-auth-openfire
+
 ### Todo
 * Timers
 * SRP
 * Admin page
 * Rest with https://atmospherejs.com/nimble/restivus
+
 ### Contributors
+
 ### License
 The MIT License (MIT)
