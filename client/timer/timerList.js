@@ -4,6 +4,15 @@ Template.timerList.onCreated(function() {
     self.subscribe('timers');
   });
 });
+Template.timerList.onRendered(function() {
+function updTime() {
+  document.getElementById('eve-time').innerHTML = moment().utc().format('YYYY-MM-DD HH:mm:ss [UTC]');
+}
+function startClock() {
+  setInterval(function () { updTime(); }, 1000);
+}
+startClock();
+});
 
 Template.timerList.helpers({
   dateTime: function() {

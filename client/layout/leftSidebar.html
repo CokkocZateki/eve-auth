@@ -37,7 +37,7 @@
           <li class="{{isActiveRoute 'timerList'}}"><a href="{{pathFor 'timerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
         {{/if}}
         {{#if srpActive}}
-          <li><a href="#"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+          <li class="{{isActiveRoute 'srpList'}}"><a href="{{pathFor 'srpList'}}"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
         {{/if}}
         <li class="header">MANAGE</li>
         {{#if hasRole 'manage-users'}}
@@ -58,7 +58,7 @@
         {{/if}}
         {{#if srpActive}}
           {{#if hasRole 'manage-srp'}}
-            <li><a href="#"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+            <li class="{{isActiveRoute 'manageSrpList'}}"><a href="{{pathFor 'manageSrpList'}}"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
           {{/if}}
         {{/if}}
         {{#if hasRole 'admin'}}

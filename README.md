@@ -26,7 +26,6 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 https://atmospherejs.com/kalam/eve-auth-openfire
 
 ### Todo
-* Timers
 * SRP
 * Admin page
 * Rest with https://atmospherejs.com/nimble/restivus

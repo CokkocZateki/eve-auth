@@ -12,6 +12,13 @@ Template.manageTimerList.onRendered(function() {
     sideBySide: true,
     useUtc: true
   });
+  function updTime() {
+    document.getElementById('eve-time').innerHTML = moment().utc().format('YYYY-MM-DD HH:mm:ss [UTC]');
+  }
+  function startClock() {
+    setInterval(function () { updTime(); }, 1000);
+  }
+  startClock();
 });
 Template.manageTimerList.helpers({
   dateTime: function() {
