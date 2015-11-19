@@ -19,3 +19,8 @@ Meteor.publish('services', function () {
   }
   return Services.find({}, {fields: {'service': 1, 'enabled': 1}});
 });
+
+// timers
+Meteor.publish('timers', function(){
+  return Timers.find();
+});

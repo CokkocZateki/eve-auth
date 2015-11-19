@@ -34,7 +34,7 @@
           <li class="{{isActiveRoute 'serviceList'}}"><a href="{{pathFor 'serviceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
         {{/if}}
         {{#if timersActive}}
-          <li><a href="#"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+          <li class="{{isActiveRoute 'timerList'}}"><a href="{{pathFor 'timerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
         {{/if}}
         {{#if srpActive}}
           <li><a href="#"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
@@ -53,7 +53,7 @@
         {{/if}}
         {{#if timersActive}}
           {{#if hasRole 'manage-timers'}}
-            <li><a href="#"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+            <li class="{{isActiveRoute 'manageTimerList'}}"><a href="{{pathFor 'manageTimerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
           {{/if}}
         {{/if}}
         {{#if srpActive}}

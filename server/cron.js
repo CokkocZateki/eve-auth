@@ -150,6 +150,21 @@ var checkUsers = function() {
   return true;
 };
 
+// set old timers to inactive
+var checkTimers = function() {
+  var date = new Date();
+  // let timers be visible for up to 5 minutes after their time
+  var minutes = 5;
+  date.setMinutes(date.getMinutes() + minutes);
+  var timers = Timers.find({active: true}).fetch();
+  _.each(timers, function(timer) {
+    if (date >= timer.time) {
+      Timers.update(timer._id, {$set: {active: false}});
+    }
+  });
+  return true;
+};
+
 /**
  * SyncCron
  */
@@ -192,5 +207,17 @@ if (Meteor.settings.eve.alliance) {
    }
  });
 
+/**
+ * check timers, set old ones to inactive
+ */
+ SyncedCron.add({
+   name: 'Check Timer',
+   schedule: function(parser) {
+     return parser.text('every 1 mins');
+   },
+   job: function() {
+     return checkTimers();
+   }
+ });
 
  SyncedCron.start();
