@@ -12,17 +12,6 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
-      <!--<form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>-->
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN</li>
@@ -34,10 +23,18 @@
           <li class="{{isActiveRoute 'serviceList'}}"><a href="{{pathFor 'serviceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
         {{/if}}
         {{#if timersActive}}
-          <li class="{{isActiveRoute 'timerList'}}"><a href="{{pathFor 'timerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+          <li class="{{isActiveRoute 'timerList'}}">
+            <a href="{{pathFor 'timerList'}}">
+              <i class="fa fa-hourglass"></i> <span>Timers</span>{{#if timers}}<small class="label label-warning pull-right">{{getLength timers}}</small>{{/if}}
+            </a>
+          </li>
         {{/if}}
         {{#if srpActive}}
-          <li class="{{isActiveRoute 'srpList'}}"><a href="{{pathFor 'srpList'}}"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+          <li class="{{isActiveRoute 'srpList'}}">
+            <a href="{{pathFor 'srpList'}}">
+              <i class="fa fa-ils"></i> <span>SRP</span>{{#if srpPending}}<small class="label label-success pull-right">{{getLength srpPending}}</small>{{/if}}
+            </a>
+          </li>
         {{/if}}
         <li class="header">MANAGE</li>
         {{#if hasRole 'manage-users'}}
@@ -53,12 +50,19 @@
         {{/if}}
         {{#if timersActive}}
           {{#if hasRole 'manage-timers'}}
-            <li class="{{isActiveRoute 'manageTimerList'}}"><a href="{{pathFor 'manageTimerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span></a></li>
+            <li class="{{isActiveRoute 'manageTimerList'}}">
+              <a href="{{pathFor 'manageTimerList'}}"><i class="fa fa-hourglass"></i> <span>Timers</span>{{#if timers}}<small class="label label-warning pull-right">{{getLength timers}}</small>{{/if}}
+              </a>
+            </li>
           {{/if}}
         {{/if}}
         {{#if srpActive}}
           {{#if hasRole 'manage-srp'}}
-            <li class="{{isActiveRoute 'manageSrpList'}}"><a href="{{pathFor 'manageSrpList'}}"><i class="fa fa-ils"></i> <span>SRP</span></a></li>
+            <li class="{{isActiveRoute 'manageSrpList'}}">
+              <a href="{{pathFor 'manageSrpList'}}">
+                <i class="fa fa-ils"></i> <span>SRP</span>{{#if srpPending}}<small class="label label-success pull-right">{{getLength manageSrpPending}}</small>{{/if}}
+              </a>
+            </li>
           {{/if}}
         {{/if}}
         {{#if hasRole 'admin'}}

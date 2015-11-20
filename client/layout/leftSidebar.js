@@ -18,5 +18,16 @@ Template.leftSidebar.helpers({
   },
   srpActive: function() {
     return Session.get('srpActive');
+  },
+  timers: function() {
+    return Timers.find({active: true}).fetch();
+  },
+  srpPending: function() {
+    var userID = Meteor.userId();
+    return Srp.find({user_id: userID, status: 'pending'}).fetch();
+  },
+  manageSrpPending: function() {
+    var userID = Meteor.userId();
+    return Srp.find({status: 'pending'}).fetch();
   }
 });

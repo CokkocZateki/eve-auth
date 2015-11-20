@@ -24,3 +24,12 @@ Meteor.publish('services', function () {
 Meteor.publish('timers', function(){
   return Timers.find();
 });
+
+//srp
+Meteor.publish('srp', function(){
+  var userID = this.userId;
+  if (GroupRoles.userHasRole(this.userId, 'manage-srp')) {
+    return Srp.find();
+  }
+  return Srp.find({user_id: userID}).fetch();
+});

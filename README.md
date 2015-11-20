@@ -10,7 +10,7 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 ### Features
 * User authentication via EVE's Single Sign-On (SSO)
 * No EVE API keys required
-* Groups with roles based permissions
+* Groups with role based permissions
 * Timerboard, SRP, 3rd Party Services (Openfire, etc)
 * Add or remove a service using Meteor's package management system
 
@@ -26,8 +26,8 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 https://atmospherejs.com/kalam/eve-auth-openfire
 
 ### Todo
-* SRP
 * Admin page
+* Logging
 * Rest with https://atmospherejs.com/nimble/restivus
 
 ### Contributors

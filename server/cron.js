@@ -186,7 +186,7 @@ if (Meteor.settings.eve.alliance) {
    SyncedCron.add({
      name: 'Check Corporations',
      schedule: function(parser) {
-       return parser.text('every 1 mins');
+       return parser.text('every 10 mins');
      },
      job: function() {
        return checkCorporations();
@@ -200,7 +200,7 @@ if (Meteor.settings.eve.alliance) {
  SyncedCron.add({
    name: 'Check User',
    schedule: function(parser) {
-     return parser.text('every 1 mins');
+     return parser.text('every 10 mins');
    },
    job: function() {
      return checkUsers();

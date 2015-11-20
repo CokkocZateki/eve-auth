@@ -21,7 +21,7 @@
 
     <header class="main-header">
       <!-- Logo -->
-      <a href="../../index2.html" class="logo">
+      <a href="{{pathFor 'dashboard'}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>uth</span>
         <!-- logo for regular state and mobile devices -->
@@ -39,88 +39,58 @@
 
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <!-- Messages: style can be found in dropdown.less-->
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label label-success">4</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 4 messages</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
-                        </div>
-                        <h4>
-                          Support Team
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
-            <!-- Notifications: style can be found in dropdown.less -->
-            <li class="dropdown notifications-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-hourglass"></i>
-                <span class="label label-warning">4</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">4 Timers Active</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-rocket text-aqua"></i> POCO Defense @ 2015-11-07 03:50
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
-            </li>
-            <!-- Tasks: style can be found in dropdown.less -->
-            <li class="dropdown tasks-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-ils"></i>
-                <span class="label label-danger">2</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">2 SRP Requests Active</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- Task item -->
-                      <a href="#">
-                        <h3>
-                          Slowcat
-                          <small class="pull-right">20%</small>
-                        </h3>
-                        <div class="progress xs">
-                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                            <span class="sr-only">20% Complete</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- end task item -->
-                  </ul>
-                </li>
-                <li class="footer">
-                  <a href="#">View all</a>
-                </li>
-              </ul>
-            </li>
+            <!-- Active Timers -->
+            {{#if timers}}
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-hourglass"></i>
+                  <span class="label label-danger">{{getLength timers}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">{{getLength timers}} Timer(s) Active</li>
+                  <li>
+                    <ul class="menu">
+                      {{#each timers}}
+                        <li>
+                          <a href="{{pathFor 'timerList'}}">
+                            <i class="fa fa-rocket text-aqua"></i> {{name}} @ {{formatDate time "eve"}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="{{pathFor 'timerList'}}">View All</a></li>
+                </ul>
+              </li>
+            {{/if}}
+            <!-- Pending SRP Requests -->
+            {{#if srpPending}}
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-ils"></i>
+                  <span class="label label-success">{{getLength srpPending}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">{{getLength srpPending}} SRP Request(s) Pending</li>
+                  <li>
+                    <ul class="menu">
+                      {{#each srpPending}}
+                        <li>
+                          <a href="{{pathFor 'srpList'}}">
+                            <div class="pull-left">
+                              <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_256.jpg" class="img-circle" alt="{{ currentUser.profile.name }}">
+                            </div>
+                            <h4>Pending SRP Request</h4>
+                            <p>{{link}}</p>
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="{{pathFor 'srpList'}}">See All SRP Requests</a></li>
+                </ul>
+              </li>
+            {{/if}}
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -158,10 +128,10 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a id="logout" class="btn btn-default btn-flat" href="#">Profile</a>
+                    <a id="logout" class="btn btn-default btn-flat disabled" href="#">Profile</a>
                   </div>
                   <div class="pull-right">
-                    <a href="/logout" id="logout" class="btn btn-default btn-flat">Logout</a>
+                    <a href="{{pathFor 'logout'}}" id="logout" class="btn btn-default btn-flat">Logout</a>
                   </div>
                 </li>
               </ul>
