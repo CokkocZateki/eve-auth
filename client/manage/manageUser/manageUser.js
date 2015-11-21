@@ -18,3 +18,12 @@ Template.manageUserList.helpers({
     return Services.findOne(this.service_id);
   }
 });
+
+Template.manageUserList.events({
+  'click .user-ban': function (event, template) {
+    Meteor.call('banUser', this._id);
+  },
+  'click .user-unban': function (event, template) {
+    Meteor.call('unbanUser', this._id);
+  },
+});

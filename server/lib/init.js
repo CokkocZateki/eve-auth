@@ -190,6 +190,9 @@ Accounts.validateNewUser(function (user) {
   user.profile.corporation_id = parseInt(char.result.characters[charID].corporationID);
   user.profile.corporation_name = char.result.characters[charID].corporationName;
 
+  // set banned to false
+  user.profile.banned = false;
+
   // add user to default groups
   var defaultGroup = Groups.findOne({name: 'member'});
   Groups.update(defaultGroup._id, {$push: {users: user._id}});
@@ -206,6 +209,38 @@ Accounts.validateNewUser(function (user) {
 /*
  Validate login attempt
  */
-Accounts.validateLoginAttempt(function (user) {
+Accounts.validateLoginAttempt(function (info) {
+  var user = info.user;
+  // user hasn't been created yet so return true to skip check
+  if (typeof user === 'undefined') {
+    return true;
+  }
+  // check if banned
+  if (user.profile.banned) {
+    info.allowed = false;
+    return false;
+  }
+  // check if a user has no groups
+  if (user.groups.length === 0) {
+    console.log('groups length 0');
+    // add to default group and corp group
+    var defaultGroup = Groups.findOne({name: 'member'});
+    Groups.update(defaultGroup._id, {$push: {users: user._id}});
+    // add user to corp group
+    var charID = user.services.eve.character.id;
+    var char = Async.runSync(function(done) {
+      Eveonlinejs.fetch('eve:CharacterAffiliation', {ids: charID}, function (err, res) {
+        if (err) {
+          throw new Meteor.Error(err);
+        }
+        else { done(err, res); }
+      });
+    });
+    var group = Groups.findOne({name: char.result.characters[charID].corporationName});
+    Groups.update(group._id, {$push: {users: user._id}});
+
+    // add default groups and role to new user
+    Meteor.users.update(user._id, {$set: {groups: [defaultGroup._id, group._id]}});
+  }
   return true;
 });
