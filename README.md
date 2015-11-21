@@ -12,6 +12,7 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 * No EVE API keys required
 * Groups with role based permissions
 * Timerboard, SRP, 3rd Party Services (Openfire, etc)
+* HTML5 Desktop Notifications for timers
 * Add or remove a service using Meteor's package management system
 
 ### Wiki
