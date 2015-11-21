@@ -81,8 +81,13 @@ var checkCorporations = function() {
             // remove user from each service
             _.each(services, function(service) {
               if (Meteor.services.hasOwnProperty(service.service)) {
-                var obj = Meteor.services[service.service];
-                obj.removeUser(user._id);
+                // make sure user has service enabled
+                if (typeof user.services[service.service] !== 'undefined') {
+                  if (user.services[service.service].enabled) {
+                    var obj = Meteor.services[service.service];
+                    obj.removeUser(user._id);
+                  }
+                }
               }
             });
             // remove user from groups
@@ -153,12 +158,17 @@ var checkUsers = function() {
 // set old timers to inactive
 var checkTimers = function() {
   var date = new Date();
+  var dateMinusFive = new Date();
   // let timers be visible for up to 5 minutes after their time
   var minutes = 5;
-  date.setMinutes(date.getMinutes() + minutes);
+  dateMinusFive.setMinutes(dateMinusFive.getMinutes() - minutes);
   var timers = Timers.find({active: true}).fetch();
   _.each(timers, function(timer) {
-    if (date >= timer.time) {
+    if (!timer.notified && date >= timer.time) {
+      Meteor.myFunctions.notifyTimer(timer);
+      Timers.update(timer._id, {$set: {notified: true}});
+    }
+    if (dateMinusFive >= timer.time) {
       Timers.update(timer._id, {$set: {active: false}});
     }
   });

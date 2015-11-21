@@ -222,7 +222,6 @@ Accounts.validateLoginAttempt(function (info) {
   }
   // check if a user has no groups
   if (user.groups.length === 0) {
-    console.log('groups length 0');
     // add to default group and corp group
     var defaultGroup = Groups.findOne({name: 'member'});
     Groups.update(defaultGroup._id, {$push: {users: user._id}});

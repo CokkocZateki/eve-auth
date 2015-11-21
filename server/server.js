@@ -4,7 +4,15 @@ Meteor.myFunctions = {
     * @param string $value - what it is
     * @return bool - success or failure
   */
-  test: function(value) {
+  notifyTimer: function(timer) {
+    var date = new Date();
+    Alerts.remove({});
+    Alerts.insert({
+      title: 'AUTH TIMER ALERT',
+      message: timer.name,
+      created: date,
+      modified: date
+    });
     return true;
   }
 };

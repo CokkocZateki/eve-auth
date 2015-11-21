@@ -83,6 +83,7 @@ Template.editTimer.events({
     event.preventDefault();
 
     var id = this._id;
+    var notified = false;
     var name = event.target.name.value;
     var type = event.target.type.value;
     var fc = event.target.fc.value;
@@ -95,6 +96,7 @@ Template.editTimer.events({
       fc: fc,
       time: time,
       text: text,
+      notified: notified
     };
 
     Meteor.call('editTimer', id, timer, function(error, result){

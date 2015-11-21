@@ -22,8 +22,13 @@ Meteor.methods({
     var services = Services.find({enabled: true}).fetch();
     _.each(services, function(service) {
       if (Meteor.services.hasOwnProperty(service.service)) {
-        var obj = Meteor.services[service.service];
-        obj.removeUser(user._id);
+        // make sure user has service enabled
+        if (typeof user.services[service.service] !== 'undefined') {
+          if (user.services[service.service].enabled) {
+            var obj = Meteor.services[service.service];
+            obj.removeUser(user._id);
+          }
+        }
       }
     });
     return true;
