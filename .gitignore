@@ -1,6 +1,6 @@
 # meteor
 .meteor/local
-packages
+packages/
 # eve-auth
 settings.json
 lib/dev.js
