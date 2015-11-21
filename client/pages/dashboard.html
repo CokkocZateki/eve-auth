@@ -47,12 +47,12 @@
           <div class="box-body">
             <div class="list-group">
               {{#each currentUser.groups}}
-              {{#with group}}
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">{{name}}</h4>
-                <p class="list-group-item-text">{{description}}</p>
-              </a>
-              {{/with}}
+                {{#with group}}
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">{{name}}</h4>
+                  <p class="list-group-item-text">{{description}}</p>
+                </a>
+                {{/with}}
               {{/each}}
             </div>
           </div>

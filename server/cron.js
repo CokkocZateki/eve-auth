@@ -200,7 +200,7 @@ if (Meteor.settings.eve.alliance) {
  SyncedCron.add({
    name: 'Check User',
    schedule: function(parser) {
-     return parser.text('every 10 mins');
+     return parser.text('every 6 mins');
    },
    job: function() {
      return checkUsers();

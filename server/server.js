@@ -1,7 +1,3 @@
-
-
-
-
 Meteor.myFunctions = {
   /**
     * @desc description

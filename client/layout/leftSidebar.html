@@ -20,21 +20,27 @@
         <li class="{{isActiveRoute 'help'}}"><a href="{{pathFor 'help'}}"><i class="fa fa-question"></i> <span>Help</span></a></li>
         <li class="header">ADDONS</li>
         {{#if servicesActive}}
-          <li class="{{isActiveRoute 'serviceList'}}"><a href="{{pathFor 'serviceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
+          {{#if hasRole 'user-services'}}
+            <li class="{{isActiveRoute 'serviceList'}}"><a href="{{pathFor 'serviceList'}}"><i class="fa fa-cubes"></i> <span>Services</span></a></li>
+          {{/if}}
         {{/if}}
         {{#if timersActive}}
-          <li class="{{isActiveRoute 'timerList'}}">
-            <a href="{{pathFor 'timerList'}}">
-              <i class="fa fa-hourglass"></i> <span>Timers</span>{{#if timers}}<small class="label label-warning pull-right">{{getLength timers}}</small>{{/if}}
-            </a>
-          </li>
+          {{#if hasRole 'user-timers'}}
+            <li class="{{isActiveRoute 'timerList'}}">
+              <a href="{{pathFor 'timerList'}}">
+                <i class="fa fa-hourglass"></i> <span>Timers</span>{{#if timers}}<small class="label label-warning pull-right">{{getLength timers}}</small>{{/if}}
+              </a>
+            </li>
+          {{/if}}
         {{/if}}
         {{#if srpActive}}
-          <li class="{{isActiveRoute 'srpList'}}">
-            <a href="{{pathFor 'srpList'}}">
-              <i class="fa fa-ils"></i> <span>SRP</span>{{#if srpPending}}<small class="label label-success pull-right">{{getLength srpPending}}</small>{{/if}}
-            </a>
-          </li>
+          {{#if hasRole 'user-srp'}}
+            <li class="{{isActiveRoute 'srpList'}}">
+              <a href="{{pathFor 'srpList'}}">
+                <i class="fa fa-ils"></i> <span>SRP</span>{{#if srpPending}}<small class="label label-success pull-right">{{getLength srpPending}}</small>{{/if}}
+              </a>
+            </li>
+          {{/if}}
         {{/if}}
         <li class="header">MANAGE</li>
         {{#if hasRole 'manage-users'}}

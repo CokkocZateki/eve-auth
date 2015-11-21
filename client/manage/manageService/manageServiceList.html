@@ -27,11 +27,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{#with services}}
-                      {{#each services}}
-                          {{> UI.dynamic template=this.manage_template}}
-                      {{/each}}
-                    {{/with}}
+                    {{#each services}}
+                        {{> UI.dynamic template=this.manage_template}}
+                    {{/each}}
                   </tbody>
                 </table>
               </div>

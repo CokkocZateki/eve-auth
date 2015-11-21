@@ -26,24 +26,22 @@
                 </tr>
               </thead>
               <tbody>
-                {{#with users}}
-                  {{#each users}}
-                      <tr>
-                        <td>{{profile.name}}</td>
-                        <td>{{profile.corporation_name}}</td>
-                        <td>
-                          {{#each groups}}
-                            {{#with group}}
-                              {{name}},
-                            {{/with}}
-                          {{/each}}
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-danger btn-sm disabled">Ban</button>
-                        </td>
-                      </tr>
-                  {{/each}}
-                {{/with}}
+                {{#each users}}
+                    <tr>
+                      <td>{{profile.name}}</td>
+                      <td>{{profile.corporation_name}}</td>
+                      <td>
+                        {{#each groups}}
+                          {{#with group}}
+                            {{name}},
+                          {{/with}}
+                        {{/each}}
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm disabled">Ban</button>
+                      </td>
+                    </tr>
+                {{/each}}
               </tbody>
             </table>
           </div>

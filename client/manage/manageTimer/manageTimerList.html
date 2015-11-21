@@ -71,25 +71,23 @@
                 </tr>
               </thead>
               <tbody>
-                {{#with timers}}
-                  {{#each timers}}
-                    <tr>
-                      <td>{{name}}</td>
-                      <td>{{type}}</td>
-                      <td>{{fc}}</td>
-                      <td>{{text}}</td>
-                      <td>{{formatDate time "eve"}} UTC</td>
-                      <td>{{formatDate local_time "eve"}}</td>
-                      <td>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Edit or Delete">
-                          <button type="button" class="btn btn-primary timer-edit" value="{{_id}}">Edit</button>
-                          <button type="button" class="btn btn-danger timer-delete" value="{{_id}}">Delete</button>
-                        </div>
-                      </td>
-                    </tr>
-                    {{> editTimer}}
-                  {{/each}}
-                {{/with}}
+                {{#each timers}}
+                  <tr>
+                    <td>{{name}}</td>
+                    <td>{{type}}</td>
+                    <td>{{fc}}</td>
+                    <td>{{text}}</td>
+                    <td>{{formatDate time "eve"}} UTC</td>
+                    <td>{{formatDate local_time "eve"}}</td>
+                    <td>
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Edit or Delete">
+                        <button type="button" class="btn btn-primary timer-edit" value="{{_id}}">Edit</button>
+                        <button type="button" class="btn btn-danger timer-delete" value="{{_id}}">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                  {{> editTimer}}
+                {{/each}}
               </tbody>
             </table>
           </div>

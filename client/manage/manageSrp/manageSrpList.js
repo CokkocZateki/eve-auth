@@ -1,3 +1,10 @@
+Template.manageSrpList.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('users');
+  });
+});
+
 Template.manageSrpList.helpers({
   srpPending: function() {
     return Srp.find({status: 'pending'}, {sort: {created: 1}}).fetch();
