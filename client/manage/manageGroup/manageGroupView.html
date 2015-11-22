@@ -110,7 +110,7 @@
                 <form id="user-add" class="form-inline">
                   <div class="form-group">
                     <label class="sr-only" for="userName">User Name</label>
-                    <input type="text" class="form-control typeahead" id="userName" placeholder="User Name" autocomplete="off" spellcheck="off" data-source="usersList">
+                    <input type="text" id="userName" name="userName" class="form-control typeahead" placeholder="User Name" autocomplete="off" spellcheck="off" data-source="usersList">
                   </div>
                   <button type="submit" class="btn btn-primary {{#unless joinable}}disabled{{/unless}}">Add</button>
                 </form>

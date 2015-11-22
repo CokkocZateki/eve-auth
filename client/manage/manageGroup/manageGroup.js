@@ -22,13 +22,19 @@ Template.manageGroupView.onCreated(function() {
     self.subscribe('users');
   });
 });
+Template.manageGroupView.onRendered(function() {
+  // terrible way to initialize typeahead
+  // need to find a better way
+  setTimeout(function() { Meteor.typeahead.inject(); }, 1000);
+});
 Template.manageGroupView.helpers({
   group: function() {
     var id = FlowRouter.getParam('id');
     return Groups.findOne({_id: id});
   },
   usersList: function() {
-    return Meteor.users.find().fetch().map(function(it){return it.profile.name;});
+    var userList = Meteor.users.find().fetch().map(function(it){return it.profile.name;});
+    return userList;
   }
 });
 Template.manageGroupView.events({
@@ -109,7 +115,6 @@ Template.manageGroupEdit.events({
     event.preventDefault();
 
     var groupID = this._id;
-    console.log(groupID);
     var name = event.target.name.value;
     var serviceName = event.target.serviceName.value;
     var description = event.target.description.value;

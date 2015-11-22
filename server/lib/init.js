@@ -15,6 +15,9 @@ Meteor.startup(function () {
       //$set: {}
     }
   );
+
+  // remove old alerts
+  Alerts.remove({});
 });
 
 // check if alliance or corp set in settings
