@@ -22,7 +22,7 @@ if (!Meteor.settings.eve.id) {
   throw new Meteor.Error('Alliance or Corp ID not set');
 }
 
-//initializeGroupsAndCorps();
+initializeGroupsAndCorps();
 
 function initializeGroupsAndCorps() {
 

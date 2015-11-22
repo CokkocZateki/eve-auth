@@ -4,7 +4,7 @@ EVE-Auth
 
 Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EVE-Auth is meant for users already in the Alliance/Corporation, not for HR or people looking to join your group.
 
-[Imgur Screenshot Album]()
+[Imgur Screenshot Album](http://imgur.com/a/47U8X)
 
 [EVE Online Forum Thread]()
 ### Features
