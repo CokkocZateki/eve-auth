@@ -1,8 +1,15 @@
 # meteor
 .meteor/local
-packages/
+
 # eve-auth
 settings.json
 start.sh
 build.sh
 lib/dev.js
+
+# need to include index.js and package.js
+packages/*
+!packages/npm-container
+packages/npm-container/*
+!packages/npm-container/index.js
+!packages/npm-container/package.js
