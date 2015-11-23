@@ -3,4 +3,6 @@
 packages/
 # eve-auth
 settings.json
+start.sh
+build.sh
 lib/dev.js

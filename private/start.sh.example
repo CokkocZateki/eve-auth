@@ -1,0 +1,11 @@
+#!/bin/bash
+export BIND_IP=127.0.0.1
+export PORT=3000
+export HTTP_FORWARDED_COUNT=1
+export MONGO_URL='mongodb://localhost:27017/eveauth'
+# http or https
+export ROOT_URL=''
+#export MAIL_URL=''
+#export DISABLE_WEBSOCKETS=1
+export METEOR_SETTINGS="$(cat ~/bundle/programs/server/assets/app/settings.json)"
+exec node ~/bundle/main.js

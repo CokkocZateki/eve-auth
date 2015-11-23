@@ -18,7 +18,9 @@ Auth system for an EVE Online Alliance or single Corporation using Meteor.js. EV
 ### Wiki
 * [Home](https://github.com/kallama/eve-auth/wiki)
 * [Development](https://github.com/kallama/eve-auth/wiki/Development)
-* [Production](https://github.com/kallama/eve-auth/wiki/Production)
+* [Production Requirements](https://github.com/kallama/eve-auth/wiki/Production-Requirements)
+* [Production Simple](https://github.com/kallama/eve-auth/wiki/Production-Requirements)
+* [Production Advanced](https://github.com/kallama/eve-auth/wiki/Production-Advanced)
 * [Service Packages](https://github.com/kallama/eve-auth/wiki/Service-Packages)
 * [Create Service Package](https://github.com/kallama/eve-auth/wiki/Create-Service-Package)
 * [Change Log](https://github.com/kallama/eve-auth/wiki/Changelog)
